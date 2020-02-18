@@ -19,6 +19,9 @@
   },
   "homepage": "https://github.com/Daniel-Kao/my-blog#readme",
   "dependencies": {
-    "concurrently": "^5.1.0"
+    "class-transformer": "^0.2.3",
+    "class-validator": "^0.11.0",
+    "concurrently": "^5.1.0",
+    "pg": "^7.18.1"
   }
 }
