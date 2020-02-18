@@ -1,0 +1,24 @@
+{
+  "name": "my-blog",
+  "version": "1.0.0",
+  "description": "myblog",
+  "main": "index.js",
+  "scripts": {
+    "dev:client": "npm run start --prefix ./client",
+    "dev:server": "npm run start:dev --prefix ./server",
+    "dev": "concurrently \"npm run dev:*\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Daniel-Kao/my-blog.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Daniel-Kao/my-blog/issues"
+  },
+  "homepage": "https://github.com/Daniel-Kao/my-blog#readme",
+  "dependencies": {
+    "concurrently": "^5.1.0"
+  }
+}
