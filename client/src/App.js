@@ -1,23 +1,18 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { getBlogs } from "./actions";
-import { bindActionCreators } from "redux";
+import React, { Component } from 'react';
+import { Provider } from 'react-redux';
+import { renderRoutes } from 'react-router-config';
+import { BrowserRouter as Router } from 'react-router-dom';
+import routes from './routes';
+import store from './store';
 
 class App extends Component {
-  componentDidMount() {
-    this.props.getBlogs();
-  }
   render() {
-    return <div className="App">123</div>;
+    return (
+      <Provider store={store}>
+        <Router>{renderRoutes(routes)}</Router>
+      </Provider>
+    );
   }
 }
 
-const mapStateToProps = state => ({
-  blog: state.blog
-});
-
-const mapDispatchToProps = dispatch => ({
-  getBlogs: bindActionCreators(getBlogs, dispatch)
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default App;

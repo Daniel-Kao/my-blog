@@ -1,10 +1,10 @@
 import {
   BaseEntity,
-  PrimaryGeneratedColumn,
   Column,
   CreateDateColumn,
-  UpdateDateColumn,
   Entity,
+  PrimaryGeneratedColumn,
+  UpdateDateColumn,
 } from 'typeorm';
 
 @Entity()
@@ -14,6 +14,9 @@ export class Blog extends BaseEntity {
 
   @Column()
   title: string;
+
+  @Column()
+  desc: string;
 
   @Column()
   content: string;

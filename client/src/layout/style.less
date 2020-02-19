@@ -1,0 +1,31 @@
+.header-inner {
+  display: flex;
+  justify-content: space-between;
+  .header-left {
+    display: flex;
+    justify-content: flex-start;
+    .github-icon {
+      color: white;
+      font-size: 40px;
+      display: block;
+      padding-top: 10px;
+      margin-right: 20px;
+    }
+  }
+}
+
+// global
+#root {
+  min-height: 100%;
+  height: 100%;
+}
+.ant-layout {
+  min-height: 100%;
+  .ant-layout-header {
+    padding: 0;
+  }
+
+  .ant-layout-content {
+    min-height: auto;
+  }
+}

@@ -1,3 +1,3 @@
-import { getBlogs } from "./blog";
+import { getBlogById, getBlogs } from './blog';
 
-export { getBlogs };
+export { getBlogs, getBlogById };

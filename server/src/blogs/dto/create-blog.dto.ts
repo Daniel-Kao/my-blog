@@ -5,5 +5,8 @@ export class CreateBlogDto {
   title: string;
 
   @IsNotEmpty()
+  desc: string;
+
+  @IsNotEmpty()
   content: string;
 }

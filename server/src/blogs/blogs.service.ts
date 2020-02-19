@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
-import { BlogsRepository } from './blog.repository';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Blog } from './blog.entity';
+import { BlogsRepository } from './blog.repository';
 import { CreateBlogDto } from './dto/create-blog.dto';
 
 @Injectable()
@@ -17,5 +17,8 @@ export class BlogsService {
 
   createBlog(createBlogDto: CreateBlogDto): Promise<Blog> {
     return this.blogsRepository.createBlog(createBlogDto);
+  }
+  getBlogById(id: number): Promise<Blog> {
+    return this.blogsRepository.findOne(id);
   }
 }

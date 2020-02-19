@@ -1,18 +1,25 @@
 import {
+  Body,
   Controller,
   Get,
+  Param,
+  ParseIntPipe,
   Post,
   UsePipes,
   ValidationPipe,
-  Body,
 } from '@nestjs/common';
-import { BlogsService } from './blogs.service';
 import { Blog } from './blog.entity';
+import { BlogsService } from './blogs.service';
 import { CreateBlogDto } from './dto/create-blog.dto';
 
 @Controller('blogs')
 export class BlogsController {
   constructor(private blogsService: BlogsService) {}
+
+  @Get('/:id')
+  getBlogById(@Param('id', ParseIntPipe) id: number): Promise<Blog> {
+    return this.blogsService.getBlogById(id);
+  }
 
   @Get()
   getBlogs(): Promise<Blog[]> {

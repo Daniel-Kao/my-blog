@@ -1,8 +1,9 @@
-import types from "../actions/types.js";
+import types from '../actions/types.js';
 
 const initialState = {
-  name: "daniel",
-  list: []
+  name: 'daniel',
+  list: [],
+  article: {}
 };
 
 const blogReducer = (state = initialState, action) => {
@@ -11,6 +12,11 @@ const blogReducer = (state = initialState, action) => {
       return {
         ...state,
         list: action.payload
+      };
+    case types.STORE_ONE_BLOG:
+      return {
+        ...state,
+        article: action.payload
       };
     default:
       return state;
