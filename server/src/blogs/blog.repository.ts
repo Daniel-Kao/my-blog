@@ -7,9 +7,9 @@ export class BlogsRepository extends Repository<Blog> {
   async getBlogs(): Promise<Blog[]> {
     const query = this.createQueryBuilder('blog');
 
-    query.select(['blog.id', 'blog.title', 'blog.desc']);
+    query.select(['blog.id', 'blog.title', 'blog.desc', 'blog.updatedAt']);
 
-    return await query.getMany();
+    return await query.getRawMany();
   }
 
   async createBlog(createBlogDto: CreateBlogDto): Promise<Blog> {

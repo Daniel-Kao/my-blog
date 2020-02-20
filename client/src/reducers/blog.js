@@ -3,7 +3,8 @@ import types from '../actions/types.js';
 const initialState = {
   name: 'daniel',
   list: [],
-  article: {}
+  article: {},
+  timestamp: Date
 };
 
 const blogReducer = (state = initialState, action) => {
@@ -11,7 +12,8 @@ const blogReducer = (state = initialState, action) => {
     case types.STORE_BLOGS:
       return {
         ...state,
-        list: action.payload
+        list: action.payload.data,
+        timestamp: action.payload.timestamp
       };
     case types.STORE_ONE_BLOG:
       return {

@@ -5,14 +5,17 @@ import {
   Param,
   ParseIntPipe,
   Post,
+  UseInterceptors,
   UsePipes,
   ValidationPipe,
 } from '@nestjs/common';
 import { Blog } from './blog.entity';
 import { BlogsService } from './blogs.service';
 import { CreateBlogDto } from './dto/create-blog.dto';
+import { ResponseInterceptor } from './response.interceptor';
 
 @Controller('blogs')
+@UseInterceptors(new ResponseInterceptor())
 export class BlogsController {
   constructor(private blogsService: BlogsService) {}
 

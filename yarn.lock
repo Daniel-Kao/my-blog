@@ -252,7 +252,7 @@ css-to-react-native@^3.0.0:
     css-color-keywords "^1.0.0"
     postcss-value-parser "^4.0.2"
 
-date-fns@^2.0.1:
+date-fns@^2.0.1, date-fns@^2.9.0:
   version "2.9.0"
   resolved "https://registry.npm.taobao.org/date-fns/download/date-fns-2.9.0.tgz#d0b175a5c37ed5f17b97e2272bbc1fa5aec677d2"
   integrity sha1-0LF1pcN+1fF7l+InK7wfpa7Gd9I=

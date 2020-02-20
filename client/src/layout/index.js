@@ -45,7 +45,9 @@ export default ({ route }) => {
       </Header>
 
       <Content>
-        <Container>{renderRoutes(route.routes)}</Container>
+        <Container renderer={<div style={{ marginTop: 32 }} />}>
+          {renderRoutes(route.routes)}
+        </Container>
       </Content>
 
       <Footer style={{ marginTop: 20, textAlign: 'center' }}>
