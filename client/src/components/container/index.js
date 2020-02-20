@@ -6,8 +6,8 @@ const style = {
   maxWidth: 1200,
   marginLeft: 'auto',
   marginRight: 'auto',
-  paddingLeft: 20,
-  paddingRight: 20
+  paddingLeft: 30,
+  paddingRight: 30
 };
 
 export default ({ children, renderer = <div /> }) => {

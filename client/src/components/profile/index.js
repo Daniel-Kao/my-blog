@@ -1,33 +1,33 @@
 import { Avatar, Card, Icon } from 'antd';
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 
 const { Meta } = Card;
 
 const Profile = () => {
+  const history = useHistory();
   return (
-    <div>
-      <Card
-        style={{ width: '100%' }}
-        cover={
-          <img
-            alt="example"
-            src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
-          />
-        }
-        actions={[
-          <Icon type="setting" key="setting" />,
-          <Icon type="edit" key="edit" />
-        ]}
-      >
-        <Meta
-          avatar={
-            <Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
-          }
-          title="Daniel Kao"
-          description=""
+    <Card
+      style={{ width: '100%' }}
+      cover={
+        <img
+          alt="example"
+          src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
         />
-      </Card>
-    </div>
+      }
+      actions={[
+        <Icon type="edit" key="edit" onClick={() => history.push('/create')} />,
+        <Icon type="setting" key="setting" />
+      ]}
+    >
+      <Meta
+        avatar={
+          <Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
+        }
+        title="Daniel Kao"
+        description=""
+      />
+    </Card>
   );
 };
 

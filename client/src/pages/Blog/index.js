@@ -7,14 +7,14 @@ function useQuery() {
 }
 
 const Blog = props => {
-  const { article } = props;
+  const { article, getBlogById } = props;
   const query = useQuery();
   const id = query.get('id');
   console.log(id);
 
   useEffect(() => {
-    props.getBlogById(id);
-  }, []);
+    getBlogById(id);
+  }, [id, getBlogById]);
 
   return (
     <div>
