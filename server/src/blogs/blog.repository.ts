@@ -9,6 +9,7 @@ export class BlogsRepository extends Repository<Blog> {
 
     query.select(['blog.id', 'blog.title', 'blog.desc', 'blog.updatedAt']);
 
+    query.where('blog.published = :published', { published: 1 });
     return await query.getRawMany();
   }
 

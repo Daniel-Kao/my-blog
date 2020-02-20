@@ -26,4 +26,7 @@ export class Blog extends BaseEntity {
 
   @UpdateDateColumn({ type: 'timestamp' })
   updatedAt: Date;
+
+  @Column({ type: 'int2', default: 1 })
+  published: number;
 }
