@@ -1,8 +1,10 @@
+import { User } from 'src/auth/user.entity';
 import {
   BaseEntity,
   Column,
   CreateDateColumn,
   Entity,
+  ManyToOne,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
@@ -26,4 +28,14 @@ export class Blog extends BaseEntity {
 
   @Column({ type: 'int2', default: 1 })
   published: number;
+
+  @ManyToOne(
+    type => User,
+    user => user.blogs,
+    { eager: false },
+  )
+  user: User;
+
+  @Column()
+  userId: number;
 }

@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
+import { User } from 'src/auth/user.entity';
 import { Blog } from './blog.entity';
 import { BlogsRepository } from './blog.repository';
 import { CreateBlogDto } from './dto/create-blog.dto';
@@ -11,14 +12,14 @@ export class BlogsService {
     private blogsRepository: BlogsRepository,
   ) {}
 
-  getBlogs(): Promise<Blog[]> {
-    return this.blogsRepository.getBlogs();
+  getBlogs(user: User): Promise<Blog[]> {
+    return this.blogsRepository.getBlogs(user);
   }
 
-  createBlog(createBlogDto: CreateBlogDto): Promise<Blog> {
-    return this.blogsRepository.createBlog(createBlogDto);
+  createBlog(createBlogDto: CreateBlogDto, user: User): Promise<Blog> {
+    return this.blogsRepository.createBlog(createBlogDto, user);
   }
-  getBlogById(id: number): Promise<Blog> {
-    return this.blogsRepository.findOne(id);
+  getBlogById(id: number, user: User): Promise<Blog> {
+    return this.blogsRepository.findOne({ where: { id, email: user.email } });
   }
 }
