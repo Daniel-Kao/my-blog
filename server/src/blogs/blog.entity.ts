@@ -16,9 +16,6 @@ export class Blog extends BaseEntity {
   title: string;
 
   @Column()
-  desc: string;
-
-  @Column()
   content: string;
 
   @CreateDateColumn({ type: 'timestamp' })

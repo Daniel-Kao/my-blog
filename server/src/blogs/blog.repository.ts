@@ -7,19 +7,18 @@ export class BlogsRepository extends Repository<Blog> {
   async getBlogs(): Promise<Blog[]> {
     const query = this.createQueryBuilder('blog');
 
-    query.select(['blog.id', 'blog.title', 'blog.desc', 'blog.updatedAt']);
+    query.select(['blog.id', 'blog.title', 'blog.updatedAt']);
 
     query.where('blog.published = :published', { published: 1 });
     return await query.getRawMany();
   }
 
   async createBlog(createBlogDto: CreateBlogDto): Promise<Blog> {
-    const { title, desc, content } = createBlogDto;
+    const { title, content } = createBlogDto;
 
     const blog = new Blog();
 
     blog.title = title;
-    blog.desc = desc;
     blog.content = content;
 
     await blog.save();

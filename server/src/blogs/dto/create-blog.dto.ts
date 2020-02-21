@@ -1,12 +1,13 @@
-import { IsNotEmpty } from 'class-validator';
+import { Optional } from '@nestjs/common';
+import { IsOptional } from 'class-validator';
 
 export class CreateBlogDto {
-  @IsNotEmpty()
+  @IsOptional()
   title: string;
 
-  @IsNotEmpty()
-  desc: string;
-
-  @IsNotEmpty()
+  @IsOptional()
   content: string;
+
+  @Optional()
+  pubslished: number;
 }
