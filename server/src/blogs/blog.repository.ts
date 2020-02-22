@@ -31,4 +31,12 @@ export class BlogsRepository extends Repository<Blog> {
 
     return blog;
   }
+
+  async getAll(): Promise<Blog[]> {
+    const query = this.createQueryBuilder('blog');
+
+    query.select(['blog.id', 'blog.title', 'blog.updatedAt']);
+
+    return await query.getMany();
+  }
 }

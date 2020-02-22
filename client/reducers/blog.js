@@ -1,18 +1,17 @@
 import types from '../actions/types.js';
 
-export const initialState = {
-  name: 'daniel',
-  list: [],
+export const blog = {
+  list: {},
   article: {},
-  timestamp: Date
+  timestamp: {}
 };
 
-const blogReducer = (state = initialState, action) => {
+export const blogReducer = (state = blog, action) => {
   switch (action.type) {
     case types.STORE_BLOGS:
       return {
         ...state,
-        list: action.payload.data,
+        article: action.payload,
         timestamp: action.payload.timestamp
       };
     case types.STORE_ONE_BLOG:
@@ -24,5 +23,3 @@ const blogReducer = (state = initialState, action) => {
       return state;
   }
 };
-
-export default blogReducer;

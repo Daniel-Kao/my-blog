@@ -1,88 +1,12 @@
-import axios from 'axios';
 import { applyMiddleware, createStore } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import thunkMiddleware from 'redux-thunk';
+import { initialState as initial, reducer } from './reducers';
 
-const exampleInitialState = {
-  lastUpdate: 0,
-  light: false,
-  count: 0,
-  list: {}
-};
-
-export const actionTypes = {
-  TICK: 'TICK',
-  INCREMENT: 'INCREMENT',
-  DECREMENT: 'DECREMENT',
-  RESET: 'RESET',
-  STORE_BLOG: 'STORE_BLOG'
-};
-
-// REDUCERS
-export const reducer = (state = exampleInitialState, action) => {
-  switch (action.type) {
-    case actionTypes.TICK:
-      return Object.assign({}, state, {
-        lastUpdate: action.ts,
-        light: !!action.light
-      });
-    case actionTypes.INCREMENT:
-      return Object.assign({}, state, {
-        count: state.count + 1
-      });
-    case actionTypes.DECREMENT:
-      return Object.assign({}, state, {
-        count: state.count - 1
-      });
-    case actionTypes.RESET:
-      return Object.assign({}, state, {
-        count: exampleInitialState.count
-      });
-    case actionTypes.STORE_BLOG:
-      return Object.assign({}, state, {
-        list: action.list
-      });
-    default:
-      return state;
-  }
-};
-
-// ACTIONS
-export const serverRenderClock = isServer => dispatch => {
-  return dispatch({ type: actionTypes.TICK, light: !isServer, ts: Date.now() });
-};
-
-export const startClock = dispatch => {
-  return setInterval(() => {
-    dispatch({ type: actionTypes.TICK, light: true, ts: Date.now() });
-  }, 1000);
-};
-
-export const incrementCount = () => {
-  return { type: actionTypes.INCREMENT };
-};
-
-export const decrementCount = () => {
-  return { type: actionTypes.DECREMENT };
-};
-
-export const resetCount = () => {
-  return { type: actionTypes.RESET };
-};
-
-export function initializeStore(initialState = exampleInitialState) {
+export function initializeStore(initialState = initial) {
   return createStore(
     reducer,
     initialState,
     composeWithDevTools(applyMiddleware(thunkMiddleware))
   );
 }
-
-export const getBlogs = () => async dispatch => {
-  const data = await axios.get('https://jsonplaceholder.typicode.com/todos/1');
-
-  dispatch({
-    type: actionTypes.STORE_BLOG,
-    list: data.data
-  });
-};

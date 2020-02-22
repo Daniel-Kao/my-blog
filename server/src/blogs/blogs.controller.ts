@@ -20,11 +20,16 @@ import { ResponseInterceptor } from './response.interceptor';
 
 @Controller('blogs')
 @UseInterceptors(new ResponseInterceptor())
-@UseGuards(AuthGuard())
 export class BlogsController {
   constructor(private blogsService: BlogsService) {}
 
+  @Get('/all')
+  getAllBlogs(): Promise<Blog[]> {
+    return this.blogsService.getAll();
+  }
+
   @Get('/:id')
+  @UseGuards(AuthGuard())
   getBlogById(
     @Param('id', ParseIntPipe) id: number,
     @GetUser() user: User,
@@ -33,10 +38,13 @@ export class BlogsController {
   }
 
   @Get()
+  @UseGuards(AuthGuard())
   getBlogs(@GetUser() user: User): Promise<Blog[]> {
     return this.blogsService.getBlogs(user);
   }
+
   @Post()
+  @UseGuards(AuthGuard())
   @UsePipes(ValidationPipe)
   createBlog(
     @Body() createBlogDto: CreateBlogDto,

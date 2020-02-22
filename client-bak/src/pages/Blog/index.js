@@ -10,7 +10,6 @@ const Blog = props => {
   const { article, getBlogById } = props;
   const query = useQuery();
   const id = query.get('id');
-  console.log(id);
 
   useEffect(() => {
     getBlogById(id);

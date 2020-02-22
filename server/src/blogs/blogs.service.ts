@@ -19,7 +19,12 @@ export class BlogsService {
   createBlog(createBlogDto: CreateBlogDto, user: User): Promise<Blog> {
     return this.blogsRepository.createBlog(createBlogDto, user);
   }
+
   getBlogById(id: number, user: User): Promise<Blog> {
     return this.blogsRepository.findOne({ where: { id, email: user.email } });
+  }
+
+  getAll(): Promise<Blog[]> {
+    return this.blogsRepository.getAll();
   }
 }
