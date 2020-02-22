@@ -4,7 +4,7 @@
   "description": "myblog",
   "main": "index.js",
   "scripts": {
-    "dev:client": "npm run start --prefix ./client",
+    "dev:client": "npm run dev --prefix ./client",
     "dev:server": "npm run start:dev --prefix ./server",
     "dev": "concurrently \"npm run dev:*\""
   },
