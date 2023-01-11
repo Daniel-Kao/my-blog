@@ -20,7 +20,7 @@
   "homepage": "https://github.com/Daniel-Kao/my-blog#readme",
   "dependencies": {
     "class-transformer": "^0.2.3",
-    "class-validator": "^0.11.0",
+    "class-validator": "^0.14.0",
     "concurrently": "^5.1.0",
     "date-fns": "^2.9.0",
     "pg": "^7.18.1",
